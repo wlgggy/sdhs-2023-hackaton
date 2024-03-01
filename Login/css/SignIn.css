@@ -1,0 +1,76 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+img {
+  width: 300px;
+}
+.main {
+  height: 812px;
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 200px;
+}
+
+/* 전체 폼 스타일링 */
+#form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+/* 입력 필드 스타일링 */
+#form div {
+  margin: 10px 0;
+}
+
+#form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  box-sizing: border-box;
+  border: 3px solid #64b5f6; /* 푸른색 */
+  border-radius: 4px;
+}
+
+/* 로그인 버튼 스타일링 */
+#form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1565c0; /* 푸른색 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* 회원가입 버튼 스타일링 */
+#form button:nth-of-type(2) {
+  background-color: #42a5f5; /* 하늘색 */
+  margin-top: 10px;
+}
+
+/* 버튼에 호버 효과 추가 */
+#form button:hover {
+  opacity: 0.8;
+}
+
+/* 폼 내의 가운데 정렬 */
+#form {
+  text-align: center;
+}

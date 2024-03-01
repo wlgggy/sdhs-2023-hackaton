@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./common.css" />
+    <title>라이브톡</title>
+  </head>
+  <body>
+    <nav role="navigation">
+      <div id="menuToggle">
+        <input type="checkbox" />
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <ul id="menu">
+          <a href="../index.html"><li>메인</li></a>
+          <a href="#"><li>라이브톡</li></a>
+          <a href="../post/post.html"><li>커뮤니티</li></a>
+          <a href="../recommend/recommend.html"><li>메뉴추천</li></a>
+          <a href="../like/like.html"><li>만족도조사</li></a>
+          <a href="../mypage/mypage.html"><li>마이페이지</li></a>
+        </ul>
+      </div>
+    </nav>
+    <section>
+      <div class="chat-container">
+        <div class="chat-header">✨온부경선생님✨</div>
+        <div class="chat-messages" id="chatMessages">
+          <!-- 채팅 메시지가 여기에 표시됩니다. -->
+        </div>
+        <div class="chat-input">
+          <input type="text" id="messageInput" placeholder="메시지를 입력하세요" />
+          <button id="sendButton">전송</button>
+        </div>
+      </div>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const chatMessages = document.getElementById("chatMessages");
+        const messageInput = document.getElementById("messageInput");
+        const sendButton = document.getElementById("sendButton");
+
+        sendButton.addEventListener("click", function () {
+          const messageText = messageInput.value.trim();
+          if (messageText !== "") {
+            appendMessage("sender", messageText);
+            messageInput.value = "";
+          }
+        });
+
+        function appendMessage(sender, text) {
+          const messageDiv = document.createElement("div");
+          messageDiv.classList.add("message", sender);
+          const messageBubble = document.createElement("div");
+          messageBubble.classList.add("message-bubble");
+          messageBubble.textContent = text;
+          messageDiv.appendChild(messageBubble);
+          chatMessages.appendChild(messageDiv);
+
+          // 자동으로 스크롤을 맨 아래로 이동
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+      });
+    </script>
+  </body>
+</html>

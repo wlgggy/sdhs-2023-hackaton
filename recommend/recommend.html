@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메뉴추천</title>
+    <link rel="stylesheet" href="./common.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      function handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(document.getElementById("recommend-form"));
+        axios.post("http://localhost:4000/recommend-form", {
+          main: formData.get("main"),
+          side: formData.get("side"),
+          dessert: formData.get("dessert"),
+        });
+      }
+      function previewImage(input) {
+        var preview = document.getElementById("image-preview");
+        preview.innerHTML = "";
+
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            var image = document.createElement("img");
+            image.src = e.target.result;
+            preview.appendChild(image);
+          };
+
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <nav role="navigation">
+      <div id="menuToggle">
+        <input type="checkbox" />
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <ul id="menu">
+          <a href="../index.html"><li>메인</li></a>
+          <a href="../livetalk/livetalk.html"><li>라이브톡</li></a>
+          <a href="../post/post.html"><li>커뮤니티</li></a>
+          <a href="#"><li>메뉴추천</li></a>
+          <a href="../like/like.html"><li>만족도조사</li></a>
+          <a href="../mypage/mypage.html"><li>마이페이지</li></a>
+        </ul>
+      </div>
+    </nav>
+    <section>
+      <h1>급식 메뉴 추천</h1>
+      <form action="우리가 보낼거" id="recommend-form">
+        <div class="choose">
+          <div class="Main">
+            <h3>&nbsp;메인: <input type="text" name="main" placeholder="ex) 제육볶음" required /> <br /></h3>
+          </div>
+          <div class="Side">
+            <h3>&nbsp;사이드: <input type="text" name="side" placeholder="ex) 계란후라이" required /><br /></h3>
+          </div>
+          <div class="dessert">
+            <h3>&nbsp;후식: <input type="text" name="dessert" placeholder="ex) 탕후루" required /><br /></h3>
+          </div>
+          <div class="filebox">
+            <input type="file" id="file-input" accept="image/*" onchange="previewImage(this)" />
+            <label for="file-input" id="choose-file-btn">사진 선택</label>
+          </div>
+        </div>
+        <div id="image-preview"></div>
+        <h2>
+          <input type="submit" style="color: white; background-color: rgba(0, 147, 237, 1); border-radius: 20px; width: 327px; height: 66px" value="추천하기" />
+        </h2>
+      </form>
+    </section>
+    <script>
+      document.getElementById("recommend-form").addEventListener("submit", handleSubmit);
+    </script>
+  </body>
+</html>
